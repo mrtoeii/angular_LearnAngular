@@ -1,15 +1,9 @@
-<p>{{title}}</p>
-<p>{{name}}</p>
-<button (click)="setName()">Click</button>
-<!-- <router-outlet></router-outlet> -->
-
-<ul>
-  <li *ngFor="let item of position">{{ item }}</li>
-</ul>
-
-<p *ngIf="false">
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque perspiciatis iusto libero repudiandae qui. Eum in voluptatibus perspiciatis, corrupti reprehenderit, ipsam deleniti aut veniam cumque a veritatis tempora tenetur eaque.
-</p>
-
-<img [src]="imageURL" alt="" srcset="">
-<img src="{{imageURL}}" alt="" srcset="">
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened="false">
+    <button mat-button>Click</button>
+    <button mat-button>Click</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (toggle)="sidenav.toggle()" (sayHi)="onSayHi($event)"></app-header>
+  </mat-sidenav-content>
+</mat-sidenav-container>
