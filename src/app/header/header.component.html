@@ -2,7 +2,7 @@
   <button mat-button (click)="onClickNavToggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>MYPOS</span>
+  <span *ngIf="!mobileQueryMax">MYPOS</span>
   <span class='flex-fill'></span>
   <div class="d-flex align-items-center">
     <button mat-button aria-label="Example icon button with a heart icon">
