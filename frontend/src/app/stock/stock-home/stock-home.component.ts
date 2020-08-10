@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Product } from 'src/app/models/product.model'
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-stock-home',
   templateUrl: './stock-home.component.html',
@@ -15,7 +16,11 @@ export class StockHomeComponent implements OnInit {
   textSearch: string
   @ViewChild(MatSort, { static: true }) sort: MatSort
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
-  constructor() { }
+
+  constructor(
+    private httpClient: HttpClient
+
+    ) {  }
 
   ngOnInit(): void {
     this.dataSource.sort = this.sort
@@ -24,6 +29,24 @@ export class StockHomeComponent implements OnInit {
   }
 
   feedData() {
+    // async
+    //subscribe (observer)
+    this.httpClient.get('http://localhost/ci_api/api/v1/product').subscribe(
+      data =>{
+        // console.log(JSON.stringify(data));
+        console.log(data);
+
+      },
+      error => {
+        console.log(error.message);
+        // console.log(JSON.stringify(error));
+
+      },
+      ()=>{
+        console.log('Feed network done');
+
+      }
+    )
     const dummy: Product[] = [
       {
         name: "Macbook Pro 13 2020",

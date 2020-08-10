@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http/'
 
 // Angular Material Import
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -47,6 +48,7 @@ import { StockEditComponent } from './stock/stock-edit/stock-edit.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
