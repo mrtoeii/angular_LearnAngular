@@ -1,0 +1,88 @@
+<div class="container">
+    <form #authForm="ngForm" role="form" (submit)="onSubmit(authForm.value)" >
+      <br />
+      <img
+        src="http://www.codemobiles.com/biz/images/codemobiles_logo.png?ref=10"
+        alt="www.codemobiles.com"
+        width="300"
+      />
+      <br />
+      <br />
+  
+      <legend>Angular Form (Normal)</legend>
+  
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input
+         
+          ngModel
+          required
+          name="firstname"
+          type="text"
+          class="form-control"
+          id="first_name"
+          placeholder="First Name"
+        />
+      </div>
+      <!-- #firstname <div>Debug: {{ firstname.className }}</div> -->
+  
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input
+          ngModel
+          name="lastname"
+          required
+          type="text"
+          class="form-control"
+          id="last_name"
+          placeholder="Last Name"
+        />
+        <span></span>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          ngModel
+          name="email"
+          required
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            #password
+            ngModel
+            name="password"
+            required
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="confirm_password">Comfirmed Password</label>
+        <input
+            #confirm_password
+            ngModel
+            name="confirm_password"
+            required
+            type="password"
+            class="form-control"
+            id="confirm_password"
+            placeholder="Comfirmed Password"
+        />
+      </div>
+      <button [disabled]="!authForm.valid || (password.value != confirm_password.value) "  type="submit" class="btn btn-primary">Submit</button>
+  
+      <span>{{ authForm.value | json }}</span>
+    </form>
+    <!-- <span *ngIf="debug != ''">{{ debug }}</span> -->
+  </div>
+  

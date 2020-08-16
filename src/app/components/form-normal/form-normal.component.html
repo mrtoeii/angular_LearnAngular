@@ -1,0 +1,69 @@
+<div class="container">
+  <form role="form" (submit)="onSubmit()">
+    <br />
+    <img
+      src="http://www.codemobiles.com/biz/images/codemobiles_logo.png?ref=10"
+      alt="www.codemobiles.com"
+      width="300"
+    />
+    <br />
+    <br />
+
+    <legend>Angular Form (Normal)</legend>
+
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input
+        #firstname
+        [(ngModel)]="mRegister.firstname"
+        required
+        name="firstname"
+        type="text"
+        class="form-control"
+        id="first_name"
+        placeholder="First Name"
+      />
+    </div>
+    <div>Debug: {{ firstname.className }}</div>
+
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input
+        [(ngModel)]="mRegister.lastname"
+        name="lastname"
+        type="text"
+        class="form-control"
+        id="last_name"
+        placeholder="Last Name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        [(ngModel)]="mRegister.email"
+        name="email"
+        type="text"
+        class="form-control"
+        id="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        [(ngModel)]="mRegister.password"
+        name="password"
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <span>{{ mRegister | json }}</span>
+  </form>
+  <span *ngIf="debug != ''">{{ debug }}</span>
+</div>
