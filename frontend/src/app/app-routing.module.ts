@@ -15,7 +15,7 @@ const routes: Routes = [
     component: StockCreateComponent
   },
   {
-    path: 'stock/edit',
+    path: 'stock/edit/:id',
     component: StockEditComponent
   }
 ];

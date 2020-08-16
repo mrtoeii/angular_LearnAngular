@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http/'
 
+// Providers
+import { httpInterceptorProviders } from './interceptors/index'
+
+
 // Angular Material Import
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,6 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
 import { StockHomeComponent } from './stock/stock-home/stock-home.component';
 import { StockCreateComponent } from './stock/stock-create/stock-create.component';
 import { StockEditComponent } from './stock/stock-edit/stock-edit.component';
+import { ProgressComponent } from './progress/progress.component';
 
 
 
@@ -41,7 +48,8 @@ import { StockEditComponent } from './stock/stock-edit/stock-edit.component';
     SideNavComponent,
     StockHomeComponent,
     StockCreateComponent,
-    StockEditComponent
+    StockEditComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +69,13 @@ import { StockEditComponent } from './stock/stock-edit/stock-edit.component';
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

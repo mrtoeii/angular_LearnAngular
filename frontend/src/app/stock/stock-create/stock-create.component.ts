@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/models/product.model';
 import { NetworkService } from 'src/app/services/network.service';
-
+import { Location } from '@angular/common';
+import  Swal  from 'sweetalert2'
 @Component({
   selector: 'app-stock-create',
   templateUrl: './stock-create.component.html',
@@ -12,7 +13,8 @@ export class StockCreateComponent implements OnInit {
   imagePreview: string | ArrayBuffer
   file: File
   constructor(
-    private networkService: NetworkService
+    private networkService: NetworkService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +45,7 @@ export class StockCreateComponent implements OnInit {
     product.image = this.file
     this.networkService.addProduct(product).subscribe(
       data =>{
-        // console.log(JSON.stringify(data));
-        console.log(data);
-        // this.dataSource.data = data
+        this.alertSwal(data) 
       },
       error => {
         console.log(error.message);
@@ -53,5 +53,17 @@ export class StockCreateComponent implements OnInit {
 
       }
     )
+  }
+
+  alertSwal(data) {
+    if (data.status == 200) {
+      Swal.fire(
+        'Success',
+        data.msg,
+        'success'
+      ).then((result) => {
+        this.location.back()
+      })
+    }
   }
 }

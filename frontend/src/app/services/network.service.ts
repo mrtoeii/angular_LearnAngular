@@ -12,15 +12,23 @@ export class NetworkService {
   constructor(private httpClient: HttpClient) { }
 
   getProducts(): Observable<ProductResponse[]> {
-    return this.httpClient.get<ProductResponse[]>(`${environment.baseURL}product`)
+    return this.httpClient.get<ProductResponse[]>(`product`)
+  }
+
+  getProduct(id: number): Observable<ProductResponse> {
+    return this.httpClient.get<ProductResponse>(`product/${id}`)
   }
 
   addProduct(product: Product): Observable<ProductResponse> {
-    return this.httpClient.post<ProductResponse>(`${environment.baseURL}product/add`, this.makeFormData(product))
+    return this.httpClient.post<ProductResponse>(`product/add`, this.makeFormData(product))
+  }
+
+  updateProduct(id: number,product: Product): Observable<ProductResponse> {
+    return this.httpClient.post<ProductResponse>(`product/update/${id}`, this.makeFormData(product))
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.httpClient.delete<any>(`${environment.baseURL}product/delete/${id}`)
+    return this.httpClient.delete<any>(`product/delete/${id}`)
   }
 
   makeFormData(product: Product): FormData {

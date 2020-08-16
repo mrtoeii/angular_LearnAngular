@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { NetworkService } from '../../services/network.service';
 import  Swal  from 'sweetalert2'
+import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-stock-home',
   templateUrl: './stock-home.component.html',
@@ -19,6 +20,7 @@ export class StockHomeComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
 
   constructor(
+    private loadingService: LoadingService,
     private networkService: NetworkService
 
     ) {  }
@@ -32,10 +34,11 @@ export class StockHomeComponent implements OnInit {
   feedData() {
     // async
     //subscribe (observer)
+    this.loadingService.showSpinner()
     this.networkService.getProducts().subscribe(
       data =>{
         // console.log(JSON.stringify(data));
-        console.log(data);
+        // console.log(data);
         this.dataSource.data = data
       },
       error => {
@@ -44,7 +47,7 @@ export class StockHomeComponent implements OnInit {
 
       },
       ()=>{
-        console.log('Feed network done');
+        // console.log('Feed network done');
 
       }
     )
@@ -75,6 +78,7 @@ export class StockHomeComponent implements OnInit {
         this.networkService.deleteProduct(product.id).subscribe(
           data =>{
             if(data.status == 200){
+              // this.feedData()
               Swal.fire(
                 'Success',
                 data.msg,
@@ -89,7 +93,7 @@ export class StockHomeComponent implements OnInit {
             // console.log(JSON.stringify(error));
           },
           ()=>{
-            console.log('Feed network done');
+            // console.log('Feed network done');
           }
         )
       }
