@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo-angular';
+
+   mUername = "Codemobiles.com"
+   mPassword = "1234"
+   mColor = "#FF0000"
+   mFontSize = "40px;"
+
+   @Input() myMsg: string
+
+   
+   
+   onClickRest(){
+    //  console.log(this.myMsg);
+     
+     this.myMsg=""
+   }
+
 }
